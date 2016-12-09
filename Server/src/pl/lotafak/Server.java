@@ -10,6 +10,7 @@ public class Server {
     public static void main(String[] args){
         HelloImpl hello = new HelloImpl();
         CalculatorImpl calculator = new CalculatorImpl();
+
         try {
             HelloInt helloSkeleton = (HelloInt) UnicastRemoteObject.exportObject(hello, 0);
             CalculatorInt calculatorSkeleton = (CalculatorInt) UnicastRemoteObject.exportObject(calculator, 0);
