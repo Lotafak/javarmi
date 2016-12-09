@@ -11,12 +11,12 @@ public class Server {
         HelloImpl hello = new HelloImpl();
         CalculatorImpl calculator = new CalculatorImpl();
         try {
-            HelloInt helloSkeleton = (HelloInt) UnicastRemoteObject.exportObject(hello, 0);
-            CalculatorInt calculatorSkeleton = (CalculatorInt) UnicastRemoteObject.exportObject(calculator, 0);
+            HelloInt helloStub = (HelloInt) UnicastRemoteObject.exportObject(hello, 0);
+            CalculatorInt calculatorStub = (CalculatorInt) UnicastRemoteObject.exportObject(calculator, 0);
 
             Registry registry = LocateRegistry.createRegistry(1099);
-            registry.bind("Hello", helloSkeleton);
-            registry.bind("Calculator", calculatorSkeleton);
+            registry.bind("Hello", helloStub);
+            registry.bind("Calculator", calculatorStub);
 
             System.out.println("Server ready");
 
