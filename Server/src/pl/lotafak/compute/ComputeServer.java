@@ -22,10 +22,10 @@ public class ComputeServer {
         ComputeImpl compute = new ComputeImpl();
         try{
             System.getSecurityManager().checkPermission(new AllPermission());
-            ComputeInt computeSkeleton = (ComputeInt) UnicastRemoteObject.exportObject(compute, 0);
+            ComputeInt computeStub = (ComputeInt) UnicastRemoteObject.exportObject(compute, 0);
 
             Registry registry = LocateRegistry.createRegistry(1099);
-            registry.bind("Compute", computeSkeleton);
+            registry.bind("Compute", computeStub);
             System.out.println("Computer Engine ready");
             System.in.read();
 
